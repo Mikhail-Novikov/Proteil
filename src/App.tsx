@@ -7,12 +7,10 @@ import ActionPbx from './pages/ActionPbx';
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/pbx" element={<ActionPbx />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/pbx" element={<ActionPbx />} />
+      </Routes>
     </BrowserRouter>
   );
 }

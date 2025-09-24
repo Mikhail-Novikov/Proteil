@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Header, InfoPillList, ModalForm, PBXCard } from '../components';
-import logo from '../assets/images/logo.svg';
+import { Header, InfoPillList, ModalForm } from '../components';
 
 /**
  * Страница главная
@@ -11,7 +10,7 @@ const Home: React.FC = (): React.ReactElement => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
-    <body>
+    <>
       <div className="page">
         <Header />
 
@@ -127,7 +126,7 @@ const Home: React.FC = (): React.ReactElement => {
       </div>
 
       <ModalForm isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} />
-    </body>
+    </>
   );
 };
 
