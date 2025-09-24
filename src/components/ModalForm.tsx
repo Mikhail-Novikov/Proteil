@@ -50,7 +50,7 @@ const ModalForm = ({ isOpen, onClose }: any) => {
       onClose();
       setFormData(initialFormData);
     } catch (err) {
-      console.error(err.response.data.message || err.message);
+      console.error(err?.message);
       alert('Ошибка при отправке данных.');
     }
   };
