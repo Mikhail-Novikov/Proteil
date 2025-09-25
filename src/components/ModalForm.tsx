@@ -33,6 +33,9 @@ const ModalForm = ({ isOpen, onClose }: any) => {
 
   const [formData, setFormData] = useState(initialFormData);
 
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || '';
+  const API_ENDPOINT = API_BASE_URL ? `${API_BASE_URL}/api/register` : '/api/register';
+
   // Обработчик изменения полей ввода
   const handleChange = (e: { target: { name: string; value: string } }) => {
     setFormData((prevState) => ({
@@ -45,7 +48,7 @@ const ModalForm = ({ isOpen, onClose }: any) => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/register', formData);
+      await axios.post(API_ENDPOINT, formData);
       alert('Регистрация успешна!');
       onClose();
       setFormData(initialFormData);

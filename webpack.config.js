@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
 
 const port = 3000;
 const dist = path.join(__dirname, 'dist');
@@ -20,6 +21,13 @@ module.exports = (_, args) => {
       hot: true,
       historyApiFallback: true,
       host,
+      proxy: {
+        '/api/*': {
+          target: process.env.REACT_APP_API_BASE_URL,
+          changeOrigin: true,
+          secure: false,
+        },
+      },
     },
     resolve: {
       modules: [src, 'node_modules'],
@@ -98,6 +106,10 @@ module.exports = (_, args) => {
         typescript: {
           configFile: path.join(__dirname, 'tsconfig.json'),
         },
+      }),
+      new Dotenv({
+        path: './.env',
+        safe: false,
       }),
     ],
   };

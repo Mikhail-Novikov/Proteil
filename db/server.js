@@ -34,5 +34,5 @@ app.post('/api/register', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.API_PORT;
 app.listen(PORT, () => console.log(`Сервер запущен на порте ${PORT}`));
