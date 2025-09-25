@@ -20,11 +20,20 @@
    - tsconfig.json, babel.config.json, webpack.config.js - конфигурационные файлы
 
 # Настройка сервера
-   - Сконфигурировать файл .env с доступами к базе в директории db
+   - Сконфигурировать файл .env с доступами к базе в корне проекта
+
+      REACT_APP_API_BASE_URL=http://localhost:5000
+
+      API_PORT=5000
+
       DB_USER=postgres
+
       DB_HOST=localhost
+
       DB_NAME=postgres
+
       DB_PASSWORD=...
+
       DB_PORT=5432
 
 # Запуск

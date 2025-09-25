@@ -1,16 +1,16 @@
 const express = require('express');
-const cors = require('cors');
 const pool = require('./index');
-
-const corsOptions = {
-  origin: ['http://localhost:3000'],
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type'],
-};
 
 const app = express();
 app.use(express.json());
-app.use(cors(corsOptions));
+
+// Включение CORS глобально
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PATCH,DELETE,PUT,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
 
 app.post('/api/register', async (req, res) => {
   try {
@@ -34,5 +34,5 @@ app.post('/api/register', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.API_PORT;
 app.listen(PORT, () => console.log(`Сервер запущен на порте ${PORT}`));
